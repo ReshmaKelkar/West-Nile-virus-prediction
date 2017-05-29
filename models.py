@@ -190,7 +190,7 @@ def model_RF(train, test, target, path=''):
  
 def get_regressor_models():
     
-    clf1 = RandomForestRegressor(n_estimators=750, criterion='mse', 
+    reg1 = RandomForestRegressor(n_estimators=750, criterion='mse', 
                                  max_depth=9, min_samples_split=2, 
                                  min_samples_leaf=6, min_weight_fraction_leaf=0.0,
                                  max_features=0.75, max_leaf_nodes=None, 
@@ -198,17 +198,17 @@ def get_regressor_models():
                                  n_jobs=2, random_state=101, verbose=0, 
                                  warm_start=False)
                             
-    clf2 = Ridge(               alpha=3.0, fit_intercept=True, normalize=False, 
+    reg2 = Ridge(               alpha=3.0, fit_intercept=True, normalize=False, 
                                 copy_X=True, max_iter=None, tol=0.001, solver='auto') 
                 
-    clf3 = Lasso(               alpha=0.2, fit_intercept=True, normalize=False, 
+    reg3 = Lasso(               alpha=0.2, fit_intercept=True, normalize=False, 
                                 precompute=False, copy_X=True, max_iter=1000, 
                                 tol=0.0001, warm_start=False, positive=False, 
                                 random_state=101, selection='cyclic')
 
-    clfs = [clf1, clf2, clf3]
+    regs = [reg1, reg2, reg3]
     
-    return clfs
+    return regs
     
     
 def get_stacked_models(train, test, y, clfs, n=1): 
