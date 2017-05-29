@@ -23,8 +23,6 @@ if __name__ == "__main__":
     import time
     
     filename_prefix = 'sampleSubmission'
-    
-    print "Running:", filename_prefix
 
     if len(sys.argv)>1:
         print ('Usage: "python West_nile_virus_prediction.py"')
@@ -70,9 +68,9 @@ if __name__ == "__main__":
 
     train, test, y_reg, y_clf, test_id = prepare_data_for_model(train, test)
     
-    clfs = get_regressor_models()
+    regs = get_regressor_models()
     print "Running stack model"
-    train_stack, test_stack = get_stacked_models(train, test, y_reg, clfs)
+    train_stack, test_stack = get_stacked_models(train, test, y_reg, regs)
     train, test  = train_stack, test_stack
     
     start_time = time.time()
