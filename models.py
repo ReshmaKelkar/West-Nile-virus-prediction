@@ -211,7 +211,7 @@ def get_regressor_models():
     return regs
     
     
-def get_stacked_models(train, test, y, clfs, n=1): 
+def get_stacked_models(train, test, y, regs, n=1): 
     '''
     train(pd data frame), test(pd date frame), Target data, List of clfs 
     to stack, position of last non-scailed model in clfs. get_stacked_models() 
@@ -225,11 +225,11 @@ def get_stacked_models(train, test, y, clfs, n=1):
     testing     = test.as_matrix()
     train_cols  = train.columns.values
     test_cols   = test.columns.values
-    blend_train = np.zeros((training.shape[0], len(clfs))) 
-    blend_test  = np.zeros((testing.shape[0], len(clfs)))
+    blend_train = np.zeros((training.shape[0], len(regs))) 
+    blend_test  = np.zeros((testing.shape[0], len(regs)))
     years       = np.unique(train.year.values) 
     
-    for j, clf in enumerate(clfs):
+    for j, reg in enumerate(regs):
         print ('Training regressor [%s]' % (j))
         for i in range(len(years)):
             print ('Fold [%s]' % (i))
@@ -248,24 +248,24 @@ def get_stacked_models(train, test, y, clfs, n=1):
             X_cv_scale=scaler.transform(X_cv)
 
             if j<n: # these models do not require scaling                                           
-                clf.fit(X_tr, Y_tr)
-                blend_train[train.year.values==years[i], j] = clf.predict(X_cv)
+                reg.fit(X_tr, Y_tr)
+                blend_train[train.year.values==years[i], j] = reg.predict(X_cv)
             else:    # these models DO require scaling 
-                clf.fit(X_tr_scale, Y_tr)
-                blend_train[train.year.values==years[i], j] = clf.predict(X_cv_scale)
+                reg.fit(X_tr_scale, Y_tr)
+                blend_train[train.year.values==years[i], j] = reg.predict(X_cv_scale)
                 
         scaler=StandardScaler().fit(training)
         X_train_scale=scaler.transform(training)
         X_test_scale=scaler.transform(testing)   
         if j<n:                                             
-            clf.fit(training, y)
-            blend_test[:, j] = clf.predict(testing)
+            reg.fit(training, y)
+            blend_test[:, j] = reg.predict(testing)
         else:
-            clf.fit(X_train_scale, y)
+            reg.fit(X_train_scale, y)
             blend_test[:, j] = clf.predict(X_test_scale)
                 
-    new_cols_train = train_cols.tolist()+['clf1', 'clf2', 'clf3']
-    new_cols_test  = test_cols.tolist()+['clf1', 'clf2', 'clf3']
+    new_cols_train = train_cols.tolist()+['reg1', 'reg2', 'reg3']
+    new_cols_test  = test_cols.tolist()+['reg1', 'reg2', 'reg3']
 
     X_train_blend_full = pd.DataFrame(np.concatenate((training, blend_train), axis=1), columns=new_cols_train)
     X_test_blend_full  = pd.DataFrame(np.concatenate((testing, blend_test), axis=1), columns=new_cols_test)
