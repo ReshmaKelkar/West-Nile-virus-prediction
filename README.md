@@ -26,10 +26,10 @@ Classification models are:
 
 # Dependencies
 
-Python 2.7 
-Pandas (any relatively recent version would work)
-Numpy (any relatively recent version would work)
-Sklearn (any relatively recent version would work)
-XGBoost
-RandomForest
+Python 2.7,
+Pandas (any relatively recent version would work),
+Numpy (any relatively recent version would work),
+Sklearn (any relatively recent version would work),
+XGBoost,
+RandomForest,
 
