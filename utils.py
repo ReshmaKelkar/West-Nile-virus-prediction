@@ -1,7 +1,7 @@
-# This script is compilation of all function needed for data preprocessing, cleaning and feature engineering
-# Modified and added features date --> month, year, day; added lagged feature (1,3,5,8,12) from weather data
+# This script is a compilation of all functions needed for data preprocessing, cleaning and feature engineering
+# Modified and added feature date --> month, year, day; added lagged feature (1,3,5,8,12) from weather data
 # Fixed leakage in data, added closest station to train and test files
-# Created dummies of species feature
+# Created dummies of species 
 
 import numpy as np
 import pandas as pd
