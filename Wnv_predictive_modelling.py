@@ -1,11 +1,11 @@
 # WNV prediction -- Kaggle challenge(https://www.kaggle.com/c/predict-west-nile-virus)
 # Objective of Challenge: Given weather, location, testing, and spraying data, this competition 
-# asks you to predict when and where different species of mosquitos will test positive for West Nile virus. 
-# A more accurate method of predicting outbreaks of West Nile virus in mosquitos will help the City of Chicago 
-# and CPHD more efficiently and effectively allocate resources towards preventing transmission of this potentially deadly virus. 
-# Input data files are kept in the "input/" directory.
-# Generate comma sepearted output file in "../input/" directory -- sampleSubmission.csv
-# I have commented certain part of the code as generating only kaggle submission file. The commented codes is for analysis of result purpose. 
+# asks you to predict when and where different species of mosquitoes will test positive for West Nile virus. 
+# A more accurate method of predicting outbreaks of West Nile virus in mosquitoes will help the City of Chicago 
+# and CPHD to more efficiently and effectively allocate resources towards preventing transmission of this potentially deadly virus. 
+# Input data files are kept under the "input/" directory.
+# Generated Comma separated output files in "input/" directory -- sampleSubmission.csv
+# Certain parts of the code have been commented upon to aid analysis of the result. 
 # Author - Reshma
 
 import numpy as np 
