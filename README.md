@@ -11,7 +11,7 @@ Given weather, location, and spraying data, this competition asked kagglers to p
   1. Created lag features from weather data
   2. Created stacked features by using number of mosquitoes per grouping of date-trap-species in train data to generate meta-features by        constructing out-of-fold predictions for log(number of mosquitoes)
   3. Fixed leakge and created number of duplicate row feature
-  4. Process date into year, month and day
+  4. Processed date into year, month and day
 
 # Model description
 
@@ -19,6 +19,7 @@ out-of-fold predictions of log(number of mosquitoes) from 3 different regression
 1. Random Forest (Sklearn)
 2. Ridge Regression (Sklearn)
 3. Lasso (Sklearn)
+
 Classification models are:
 1. XGBoost
 2. RandomForest
