@@ -1,7 +1,7 @@
-# This script produces classification model for XGBoost and RandomForest classification
-# Used GridSearchCV for finetuning parameters for both models. 
-# Time taken to tuned parameter by random forest ~ 10 min, Time taken to tuned parameter by xgboost ~ 45 min, 
-# Generate output files as predicted probability, roc_auc curve, tuned parameter dictionary
+# This script produces classification model of XGBoost and RandomForest of pre-processed train data
+# Used GridSearchCV to finetune parameters for both models
+# Time taken to tune parameters by random forest ~ 10 min, Time taken to tune parameters by xgboost ~ 45 min
+# Generated output files with information such as predicted probability, roc_auc curve, tuned parameter dictionary
 
 
 import numpy as np
